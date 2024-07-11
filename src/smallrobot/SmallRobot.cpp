@@ -387,36 +387,42 @@ void SmallRobot::stop()
 void SmallRobot::openClaw()
 {
     enable_servo(this->clawServoPin);
-    set_servo_position(this->clawServoPin, 1370);
+    set_servo_position(this->clawServoPin, 0);
     msleep(500); // Gives some time for it to open
 }
 
 void SmallRobot::closeClaw()
 {
     enable_servo(this->clawServoPin);
-    set_servo_position(this->clawServoPin, 2047);
+    set_servo_position(this->clawServoPin, 605);
     msleep(500); // Gives some time for it to close
 }
 
 void SmallRobot::restClaw()
 {
     enable_servo(this->clawServoPin);
-    set_servo_position(this->clawServoPin, 1700);
+    set_servo_position(this->clawServoPin, 300);
     msleep(500); // Gives some time for it to close
 }
 
 void SmallRobot::flickRight(int timeToFlick)
 {
+    //leftStart is 520
+    //rightEnd is 1725
     enable_servo(this->flickerServoPin);
-    set_servo_position(this->flickerServoPin, 0); //0 is just a guess
+    set_servo_position(this->flickerServoPin, 1725);
     msleep(timeToFlick); // Gives some time for it to flick
+    disable_servo(this->clawServoPin);
 }
 
 void SmallRobot::flickLeft(int timeToFlick)
 {
+    //rightStart is 1725
+    //leftEnd is 520
     enable_servo(this->flickerServoPin);
-    set_servo_position(this->flickerServoPin, 500); //500 is just a guess
+    set_servo_position(this->flickerServoPin, 520); 
     msleep(timeToFlick); // Gives some time for it to flick
+    disable_servo(this->clawServoPin);
 }
 
 void SmallRobot::moveContinuous(int ticksPerSecond)
