@@ -32,7 +32,8 @@ private:
     static const int SWITCH_ARM_ABOVE_SWITCH_POS = 50;
     static const int SWITCH_ARM_RETRACT_POS = 100;
 
-
+    // Sensor limits
+    static const int CLIFF_SENSOR_THRESHOLD = 500;
 
 public:
     Create();
