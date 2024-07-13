@@ -15,6 +15,12 @@ Create::Create()
     enable_servos();
 }
 
+Create::~Create()
+{
+    disable_servos();
+    create_disconnect();
+}
+
 // Movement
 
 void Create::move_straight(int speed)

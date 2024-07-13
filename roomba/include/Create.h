@@ -36,6 +36,7 @@ private:
 
 public:
     Create();
+    ~Create();
 
     // Movement
 
@@ -75,4 +76,4 @@ public:
     void extend_switch_arm();
     void retract_switch_arm();
     void flick_switch();
-}
+};
