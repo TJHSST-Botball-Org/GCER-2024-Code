@@ -13,6 +13,8 @@ Create::Create()
 
     create_full();
     enable_servos();
+
+    this->set_distance(0);
 }
 
 Create::~Create()
@@ -72,6 +74,18 @@ int Create::get_center_right_cliff()
 int Create::get_far_right_cliff()
 {
     return get_create_rcliff_amt();
+}
+
+// Wheel encoder distances
+
+int Create::get_distance()
+{
+    return get_create_distance();
+}
+
+void Create::set_distance(int distance)
+{
+    set_create_distance(distance);
 }
 
 

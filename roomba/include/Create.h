@@ -62,7 +62,11 @@ public:
     int get_center_right_cliff(); // Center right cliff/color sensor
     int get_far_right_cliff(); // Far right cliff/color sensor
 
-
+    // Wheel encoder distances
+    // Try to reset distances frequently
+    
+    int get_distance();
+    int set_distance(int distance);
 
     // Custom arm functions
     // All functions block until target position is reached.
