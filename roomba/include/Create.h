@@ -5,16 +5,16 @@
 #include <kipr/kipr.h>
 #endif
 
-// The Roomba class wraps some of the functions in libwallaby.
-// The Roomba class uses Create 2 functions.
+// The Create class wraps some of the functions in libwallaby.
+// The Create class uses Create 2 functions.
 // Not all functions are wrapped, see https://www.kipr.org/doc/group__create.html
 // for more.
 
 
-class Roomba
+class Create
 {
 private:
-    // ROOMBA SETTINGS HERE
+    // CREATE SETTINGS HERE
 
     // Pins
     static const int SWITCH_ARM_PIN = 0;
@@ -35,7 +35,7 @@ private:
 
 
 public:
-    Roomba();
+    Create();
 
     // Movement
 

@@ -1,13 +1,13 @@
-#include "Roomba.h"
+#include "Create.h"
 #include <iostream>
 
-Roomba::Roomba()
+Create::Create()
 {
     int is_connect_fail = create_connect();
 
     if (is_connect_fail)
     {
-        std::cout << "Failed to connect to Roomba, return code " + std::to_string(is_connect_fail) + "\n";
+        std::cout << "Failed to connect to Create, return code " + std::to_string(is_connect_fail) + "\n";
         throw is_connect_fail;
     }
 
@@ -17,17 +17,17 @@ Roomba::Roomba()
 
 // Movement
 
-void Roomba::move_straight(int speed)
+void Create::move_straight(int speed)
 {
     create_drive_straight(speed);
 }
 
-void Roomba::spin_block(int speed, int degrees)
+void Create::spin_block(int speed, int degrees)
 {
     create_spin_block(speed, degrees);
 }
 
-void Roomba::halt()
+void Create::halt()
 {
     create_drive_direct(0, 0);
 }
@@ -36,34 +36,34 @@ void Roomba::halt()
 
 // Bumper sensors
 
-int Roomba::get_left_bump()
+int Create::get_left_bump()
 {
     return get_create_lbump();
 }
 
-int Roomba::get_right_bump()
+int Create::get_right_bump()
 {
     return get_create_rbump();
 }
 
 // Cliff sensors
 
-int Roomba::get_center_left_cliff()
+int Create::get_center_left_cliff()
 {
     return get_create_lfcliff_amt();
 }
 
-int Roomba::get_far_left_cliff()
+int Create::get_far_left_cliff()
 {
     return get_create_lcliff_amt();
 }
 
-int Roomba::get_center_right_cliff()
+int Create::get_center_right_cliff()
 {
     return get_create_rfcliff_amt();
 }
 
-int Roomba::get_far_right_cliff()
+int Create::get_far_right_cliff()
 {
     return get_create_rcliff_amt();
 }
@@ -72,7 +72,7 @@ int Roomba::get_far_right_cliff()
 // Cup arm
 
 
-void Roomba::extend_cup_arm()
+void Create::extend_cup_arm()
 {
     set_servo_position(CUP_ARM_PIN, CUP_ARM_EXTEND_POS);
 
@@ -82,7 +82,7 @@ void Roomba::extend_cup_arm()
     }
 }
 
-void Roomba::retract_cup_arm()
+void Create::retract_cup_arm()
 {
     set_servo_position(CUP_ARM_PIN, CUP_ARM_RETRACT_POS);
 
@@ -92,7 +92,7 @@ void Roomba::retract_cup_arm()
     }
 }
 
-void Roomba::open_cup_gate()
+void Create::open_cup_gate()
 {
     set_servo_position(CUP_GATE_PIN, CUP_GATE_OPEN_POS);
 
@@ -102,7 +102,7 @@ void Roomba::open_cup_gate()
     }
 }
 
-void Roomba::close_cup_gate()
+void Create::close_cup_gate()
 {
     set_servo_position(CUP_GATE_PIN, CUP_GATE_CLOSE_POS);
 
@@ -116,7 +116,7 @@ void Roomba::close_cup_gate()
 // Switch arm
 
 
-void Roomba::extend_switch_arm()
+void Create::extend_switch_arm()
 {
     set_servo_position(SWITCH_ARM_PIN, SWITCH_ARM_EXTEND_POS);
 
@@ -126,7 +126,7 @@ void Roomba::extend_switch_arm()
     }
 }
 
-void Roomba::retract_switch_arm()
+void Create::retract_switch_arm()
 {
     set_servo_position(SWITCH_ARM_PIN, SWITCH_ARM_RETRACT_POS);
 
@@ -136,7 +136,7 @@ void Roomba::retract_switch_arm()
     }
 }
 
-void Roomba::flick_switch()
+void Create::flick_switch()
 {
     this->extend_switch_arm();
     
