@@ -91,18 +91,27 @@ void Create::set_distance(int distance)
 
 // Cup arm
 
-
-void Create::extend_cup_arm()
+void Create::cup_arm_right()
 {
-    set_servo_position(CUP_ARM_PIN, CUP_ARM_EXTEND_POS);
+    set_servo_position(CUP_ARM_PIN, CUP_ARM_RIGHT_POS);
 
-    while (get_servo_position(CUP_ARM_PIN) != CUP_ARM_EXTEND_POS)
+    while (get_servo_position(CUP_ARM_PIN) != CUP_ARM_RIGHT_POS)
     {
         msleep(1);
     }
 }
 
-void Create::retract_cup_arm()
+void Create::cup_arm_forward()
+{
+    set_servo_position(CUP_ARM_PIN, CUP_ARM_FORWARD_POS);
+
+    while (get_servo_position(CUP_ARM_PIN) != CUP_ARM_FORWARD_POS)
+    {
+        msleep(1);
+    }
+}
+
+void Create::cup_arm_retract()
 {
     set_servo_position(CUP_ARM_PIN, CUP_ARM_RETRACT_POS);
 
@@ -173,4 +182,11 @@ void Create::flick_switch()
     {
         msleep(1);
     }
+}
+
+void Create::reset_servos()
+{
+    this->cup_arm_retract();
+    this->retract_switch_arm();
+    this->close_cup_gate();
 }

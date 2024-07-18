@@ -14,12 +14,14 @@
 class Create
 {
 private:
+
+public:
     // CREATE SETTINGS HERE
 
     // Pins
-    static const int SWITCH_ARM_PIN = 0;
-    static const int CUP_ARM_PIN = 1;
-    static const int CUP_GATE_PIN = 2;
+    static const int SWITCH_ARM_PIN = 1;
+    static const int CUP_ARM_PIN = 2;
+    static const int CUP_GATE_PIN = 3;
 
     // Servo limits
     static const int CUP_ARM_RIGHT_POS = 0;
@@ -34,9 +36,9 @@ private:
     static const int SWITCH_ARM_RETRACT_POS = 1588;
 
     // Sensor limits
-    static const int CLIFF_SENSOR_THRESHOLD = 500;
+    static const int CLIFF_SENSOR_THRESHOLD = 2000;
 
-public:
+
     Create();
     ~Create();
 
@@ -67,14 +69,15 @@ public:
     // Try to reset distances frequently
     
     int get_distance();
-    int set_distance(int distance);
+    void set_distance(int distance);
 
     // Custom arm functions
     // All functions block until target position is reached.
 
     // Cup arm
-    void extend_cup_arm();
-    void retract_cup_arm();
+    void cup_arm_right();
+    void cup_arm_forward();
+    void cup_arm_retract();
     void open_cup_gate();
     void close_cup_gate();
 
@@ -82,4 +85,6 @@ public:
     void extend_switch_arm();
     void retract_switch_arm();
     void flick_switch();
+
+    void reset_servos();
 };
