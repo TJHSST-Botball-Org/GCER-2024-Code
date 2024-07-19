@@ -25,81 +25,104 @@ int main()
 
     // 1. Move until black line
 
+    robot.drive_direct(-100, 100); //ccw
+    msleep(1600);
+
+    while (robot.get_left_bump() != 1 && robot.get_right_bump() != 1)
+    {
+        robot.move_straight(50);
+    }
+
+    robot.drive_direct(100, -100); //cw
+    msleep(1600);
+
     out("Step 1: Move until black line");
 
     robot.set_distance(0);
-    robot.move_straight(-300);
+    //robot.drive_direct(50, 0);
+    //msleep(1000);
+    //robot.move_straight(-50);
 
     out("Waiting for black line...");
-    while (robot.get_far_left_cliff() > Create::CLIFF_SENSOR_THRESHOLD && robot.get_far_right_cliff() > Create::CLIFF_SENSOR_THRESHOLD)
-    {
-        out("Waiting " + std::to_string(robot.get_far_left_cliff()) + " " + std::to_string(robot.get_far_right_cliff()));
-        msleep(1);
-    }
+
+    robot.line_up_with_black_line(-100);
 
     out("Detected black line. Left value: " + std::to_string(robot.get_far_left_cliff()) + " Right value: " + std::to_string(robot.get_far_right_cliff()));
 
+    
+    out("lined up");
+    
+    robot.move_straight(-100);
+    msleep(1000);
+
     out("Waiting for second black line...");
 
-    while (robot.get_far_left_cliff() > Create::CLIFF_SENSOR_THRESHOLD && robot.get_far_right_cliff() > Create::CLIFF_SENSOR_THRESHOLD)
-    {
-        out("Waiting " + std::to_string(robot.get_far_left_cliff()) + " " + std::to_string(robot.get_far_right_cliff()));
-        msleep(1);
-    }
+    robot.line_up_with_black_line(-100);
 
     out("Detected second black line. Left value: " + std::to_string(robot.get_far_left_cliff()) + " Right value: " + std::to_string(robot.get_far_right_cliff()));
+    out("lined up");
 
     robot.halt();
 
+   
+
     // 2. Turn left, go up
-/*
+
     out("Step 2: Turn left, go up");
 
-    this->set_distance(0);
-    robot.spin_block(300, -90);
+    robot.cup_arm_right();
+    robot.set_distance(0);
+    robot.drive_direct(-100, 100); //ccw
+    msleep(1650);
 
-    this->set_distance(0);
-    robot.move_straight(300);
-
-    out("Step 2 Waiting for black line...");
-
-    while (robot.get_far_left_cliff() > Create::CLIFF_SENSOR_THRESHOLD && robot.get_far_right_cliff() > Create::CLIFF_SENSOR_THRESHOLD)
-    {
-        out("Waiting " + std::to_string(robot.get_far_left_cliff()) + " " + std::to_string(robot.get_far_right_cliff()));
-        msleep(1);
-    }
-
-    out("Step 2 Detected black line. Left value: " + std::to_string(robot.get_far_left_cliff()) + " Right value: " + std::to_string(robot.get_far_right_cliff()));
-
+    robot.set_distance(0);
+    robot.move_straight(-100);
+    msleep(4318);
     robot.halt();
 
     // 3. Turn right, go right
 
     out("Step 3: Turn right, go right");
 
-    this->set_distance(0);
-    robot.spin_block(300, 90);
+    robot.drive_direct(100, -100); //cw
+    msleep(1650);
 
-    this->set_distance(0);
-    robot.move_straight(300);
+    robot.set_distance(0);
+    robot.move_straight(-100);
+    msleep(8635);
 
-    // Stop at Area 4 and Rock Heap vertical black line
+    // Step 4: Turn left and push everything into the rock pit
 
-    out("Step 3 Waiting for black line...");
+    out("Step 4: ");
 
-    while (robot.get_far_left_cliff() > Create::CLIFF_SENSOR_THRESHOLD && robot.get_far_right_cliff() > Create::CLIFF_SENSOR_THRESHOLD)
+    robot.drive_direct(-100, 100); //ccw
+    msleep(1650);
+
+    // Step 5: Drive and bump into the lava tube pit
+    robot.move_straight(100);
+
+    while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
     {
-        out("Waiting " + std::to_string(robot.get_far_left_cliff()) + " " + std::to_string(robot.get_far_right_cliff()));
         msleep(1);
     }
-
-    out("Step 3 Detected black line. Left value: " + std::to_string(robot.get_far_left_cliff()) + " Right value: " + std::to_string(robot.get_far_right_cliff()));
-
-    robot.halt();
-
     
-    // Step 4
-*/
-    
+    // Step 6: Back up 11 inches
+    robot.move_straight(-100);
+    msleep(2794);
 
+    // Step 7: Rotate ccw, then move backwars until black line. We are then aligned with the pool noodles.
+    robot.drive_direct(-100, 100); //ccw
+    msleep(1650);
+
+    robot.line_up_with_black_line(-100);
+
+    // Move back slightly
+    robot.move_straight(-50);
+    msleep(1016); 
+
+    // Step 7: Get the arms ready
+    robot.cup_arm_right();
+    robot.close_cup_gate();
+    
+    // Step 8: Flicking the switch
 }
