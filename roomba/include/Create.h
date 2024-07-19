@@ -45,6 +45,7 @@ public:
     // Movement
 
     void move_straight(int speed); // Non-blocking. Speed: mm/sec, -500 to 500
+    void drive_direct(int left_speed, int right_speed);
     void spin_block(int speed, int degrees); // Blocking. Speed: mm/sec, -500 to 500
     void halt(); // Stops both motors. Does not work if used after blocking func
                  // and blocking function has not completed.

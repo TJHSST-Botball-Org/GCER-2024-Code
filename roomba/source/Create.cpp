@@ -30,6 +30,11 @@ void Create::move_straight(int speed)
     create_drive_straight(speed);
 }
 
+void Create::drive_direct(int left_speed, int right_speed)
+{
+    create_drive_direct(left_speed, right_speed);
+}
+
 void Create::spin_block(int speed, int degrees)
 {
     create_spin_block(speed, degrees);
