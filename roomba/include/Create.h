@@ -66,6 +66,8 @@ public:
     int get_center_right_cliff(); // Center right cliff/color sensor
     int get_far_right_cliff(); // Far right cliff/color sensor
 
+    void line_up_with_black_line(int speed, bool debug=false);
+
     // Wheel encoder distances
     // Try to reset distances frequently
     

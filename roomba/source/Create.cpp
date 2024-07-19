@@ -1,5 +1,6 @@
 #include "Create.h"
 #include <iostream>
+#include <string>
 
 Create::Create()
 {
@@ -79,6 +80,37 @@ int Create::get_center_right_cliff()
 int Create::get_far_right_cliff()
 {
     return get_create_rcliff_amt();
+}
+
+// Moves until black line, and then lines up.
+void Create::line_up_with_black_line(int speed, bool debug=false)
+{
+    while (!(this->get_far_left_cliff() < Create::CLIFF_SENSOR_THRESHOLD && this->get_far_right_cliff() < Create::CLIFF_SENSOR_THRESHOLD))
+    {
+        // While not both sensors aligned
+
+        if (this->get_far_left_cliff() > Create::CLIFF_SENSOR_THRESHOLD && this->get_far_right_cliff() > Create::CLIFF_SENSOR_THRESHOLD)
+        {
+            // Both sensors not sensing color
+            this->move_straight(speed);
+        }
+        else if (this->get_far_left_cliff() < Create::CLIFF_SENSOR_THRESHOLD)
+        {
+            // Left side ahead
+            this->drive_direct(0, speed);
+        }
+        else
+        {
+            // Right side ahead
+            this->drive_direct(speed, 0);
+        }
+        if (debug)
+        {
+            std::cout << "Liningup " + std::to_string(this->get_far_left_cliff()) + " " + std::to_string(this->get_far_right_cliff()) + "\n" << std::flush;
+        }
+        msleep(1);
+    }   
+
 }
 
 // Wheel encoder distances
