@@ -77,10 +77,11 @@ int main()
 
     robot.set_distance(0);
     robot.move_straight(-100);
-    msleep(4318);
+    msleep(2159);
+    robot.cup_arm_retract(); // Retract half way so that we don't collide
+                             // with the small robot
+    msleep(2159);
     robot.halt();
-
-    robot.cup_arm_retract();
     
     robot.move_straight(-50);
     msleep(1000);
