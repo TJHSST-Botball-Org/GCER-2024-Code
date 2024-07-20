@@ -53,7 +53,9 @@ int main()
     out("lined up");
     
     robot.move_straight(-100);
-    msleep(1000);
+    msleep(3000);
+    robot.drive_direct(-100, 100);
+    msleep(183);
 
     out("Waiting for second black line...");
 
@@ -70,21 +72,28 @@ int main()
 
     out("Step 2: Turn left, go up");
 
+    // Turn slightly, back up, then turn all the way
     robot.cup_arm_right();
     robot.set_distance(0);
     robot.drive_direct(-100, 100); //ccw
-    msleep(1650);
+    msleep(825);
+    robot.halt();
+    robot.move_straight(50);
+    msleep(1000);
+    robot.halt();
+    robot.drive_direct(-100, 100); //ccw
+    msleep(825);
 
     robot.set_distance(0);
     robot.move_straight(-100);
     msleep(2159);
+    robot.halt();
     robot.cup_arm_retract(); // Retract half way so that we don't collide
                              // with the small robot
-    msleep(2159);
+
+    robot.move_straight(-100);
+    msleep(1800);
     robot.halt();
-    
-    robot.move_straight(-25);
-    msleep(1000);
 
     // 3. Turn right, go right
 
@@ -92,10 +101,11 @@ int main()
 
     robot.drive_direct(100, -100); //cw
     msleep(1650);
+    robot.halt();
 
     robot.set_distance(0);
     robot.move_straight(-100);
-    msleep(6000);
+    msleep(5000);
 
     // Step 4: Turn left and push everything into the rock pit
 
