@@ -83,7 +83,7 @@ int main()
     msleep(2159);
     robot.halt();
     
-    robot.move_straight(-50);
+    robot.move_straight(-25);
     msleep(1000);
 
     // 3. Turn right, go right
