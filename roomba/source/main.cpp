@@ -94,7 +94,7 @@ int main()
 
     robot.set_distance(0);
     robot.move_straight(-100);
-    msleep(8635);
+    msleep(6000);
 
     // Step 4: Turn left and push everything into the rock pit
 
