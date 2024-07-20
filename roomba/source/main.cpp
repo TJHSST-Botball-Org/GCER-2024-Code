@@ -80,6 +80,11 @@ int main()
     msleep(4318);
     robot.halt();
 
+    robot.cup_arm_retract();
+    
+    robot.move_straight(-50);
+    msleep(1000);
+
     // 3. Turn right, go right
 
     out("Step 3: Turn right, go right");
