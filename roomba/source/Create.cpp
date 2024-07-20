@@ -83,7 +83,12 @@ int Create::get_far_right_cliff()
 }
 
 // Moves until black line, and then lines up.
-void Create::line_up_with_black_line(int speed, bool debug=false)
+void Create::line_up_with_black_line(int speed)
+{
+    this->line_up_with_black_line(speed, false);
+}
+
+void Create::line_up_with_black_line(int speed, bool debug)
 {
     while (!(this->get_far_left_cliff() < Create::CLIFF_SENSOR_THRESHOLD && this->get_far_right_cliff() < Create::CLIFF_SENSOR_THRESHOLD))
     {
