@@ -91,8 +91,9 @@ int main()
     robot.cup_arm_retract(); // Retract half way so that we don't collide
                              // with the small robot
 
+    // Moving north
     robot.move_straight(-100);
-    msleep(1800);
+    msleep(1850);
     robot.halt();
 
     // 3. Turn right, go right
@@ -105,7 +106,7 @@ int main()
 
     robot.set_distance(0);
     robot.move_straight(-100);
-    msleep(5000);
+    msleep(8000);
 
     // Step 4: Turn left and push everything into the rock pit
 
@@ -123,15 +124,20 @@ int main()
         msleep(1);
     }
     
-    // Step 6: Back up 11 inches
-    out("Step 6: Back up 11 inches");
-    robot.move_straight(-100);
-    msleep(2794);
+    // Step 6: Back up slightly
+    out("Step 6: Back slightly");
+    robot.move_straight(-20);
+    msleep(1000);
 
-    // Step 7: Rotate ccw, then move backwars until black line. We are then aligned with the pool noodles.
-    out("Step 7: Rotate ccw, then move backwars until black line. We are then aligned with the pool noodles.");
+    // Step 7: Rotate ccw, then move backwards until black line. We are then aligned with the pool noodles.
+    out("Step 7: Rotate ccw, then move backwards until black line. We are then aligned with the pool noodles.");
     robot.drive_direct(-100, 100); //ccw
     msleep(1650);
+    robot.halt();
+
+    robot.move_straight(-100);
+    msleep(6500);
+
 
     robot.line_up_with_black_line(-100);
 
