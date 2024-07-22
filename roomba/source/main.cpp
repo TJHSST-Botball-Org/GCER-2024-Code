@@ -25,7 +25,7 @@ int main()
 
     // 1. Move until black line
 
-    robot.drive_direct(-100, 100); //ccw
+    robot.drive_direct(-100, 100); //ccw-
     msleep(1600);
 
     while (robot.get_left_bump() != 1 && robot.get_right_bump() != 1)
@@ -100,13 +100,40 @@ int main()
 
     out("Step 3: Turn right, go right");
 
+
+    // When turning right, turn 45 degs, back up a bit, then turn 45 degs
+    // This is so that we don't miss the first orange pom
     robot.drive_direct(100, -100); //cw
-    msleep(1650);
+    msleep(825);
     robot.halt();
 
+    robot.move_straight(30);
+    msleep(1000);
+
+    robot.drive_direct(100, -100); //cw
+    msleep(750);
+    robot.halt();
+
+    // Move back a bit because Sidd said so
+    robot.move_straight(100);
+    msleep(1000);
+
     robot.set_distance(0);
+    robot.halt();
+        
+    // turn left just a tad before heading straight
+    robot.drive_direct(-100, 100);
+    msleep(200);
+    robot.halt();
     robot.move_straight(-100);
-    msleep(8000);
+    msleep(500);
+    robot.halt();
+    robot.drive_direct(100, -100);
+    msleep(200);
+    robot.halt();
+    
+    robot.move_straight(-100);
+    msleep(9000);
 
     // Step 4: Turn left and push everything into the rock pit
 
@@ -114,6 +141,10 @@ int main()
 
     robot.drive_direct(-100, 100); //ccw
     msleep(1650);
+    robot.drive_direct(-100, 100); //ccw
+    msleep(150);
+    robot.move_straight(-100);
+    msleep(1500);
 
     // Step 5: Drive and bump into the lava tube pit
     out("Step 5: Drive and bump into the lava tube pit");
@@ -124,10 +155,24 @@ int main()
         msleep(1);
     }
     
+    // Line up again at the rock pit black line
+    robot.move_straight(-100);
+    msleep(500);
+    robot.line_up_with_black_line(-100);
+
+    // Drive again and bump into the lava tube pit
+
+    robot.move_straight(100);
+
+    while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
+    {
+        msleep(1);
+    }
+    
     // Step 6: Back up slightly
     out("Step 6: Back slightly");
-    robot.move_straight(-20);
-    msleep(1000);
+    robot.move_straight(-100);
+    msleep(1270);
 
     // Step 7: Rotate ccw, then move backwards until black line. We are then aligned with the pool noodles.
     out("Step 7: Rotate ccw, then move backwards until black line. We are then aligned with the pool noodles.");
@@ -135,15 +180,18 @@ int main()
     msleep(1650);
     robot.halt();
 
+	robot.extend_switch_arm();
     robot.move_straight(-100);
     msleep(6500);
 
 
     robot.line_up_with_black_line(-100);
 
-    // Move back slightly
-    robot.move_straight(-50);
-    msleep(1016); 
+    // Move forward slightly
+    robot.move_straight(100);
+    msleep(1250); 
+
+    return 0;
 
 
     // Step 8: Get the arms ready, flick the switch

@@ -20,6 +20,7 @@ Create::Create()
 
 Create::~Create()
 {
+    std::cout << "Create destructor called\n" << std::flush;
     disable_servos();
     create_disconnect();
 }
