@@ -69,6 +69,8 @@ public:
     void line_up_with_black_line(int speed);
     void line_up_with_black_line(int speed, bool debug);
 
+    void center_cliff_line_up_with_black_line(int speed);
+
     // Wheel encoder distances
     // Try to reset distances frequently
     

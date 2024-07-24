@@ -12,6 +12,10 @@ Create::Create()
         throw is_connect_fail;
     }
 
+    this->cup_arm_retract();
+    this->retract_switch_arm();
+    this->close_cup_gate();
+
     create_full();
     enable_servos();
 
@@ -113,6 +117,32 @@ void Create::line_up_with_black_line(int speed, bool debug)
         if (debug)
         {
             std::cout << "Liningup " + std::to_string(this->get_far_left_cliff()) + " " + std::to_string(this->get_far_right_cliff()) + "\n" << std::flush;
+        }
+        msleep(1);
+    }   
+
+}
+
+void Create::center_cliff_line_up_with_black_line(int speed)
+{
+    while (!(this->get_center_left_cliff() < Create::CLIFF_SENSOR_THRESHOLD && this->get_center_right_cliff() < Create::CLIFF_SENSOR_THRESHOLD))
+    {
+        // While not both sensors aligned
+
+        if (this->get_center_left_cliff() > Create::CLIFF_SENSOR_THRESHOLD && this->get_center_right_cliff() > Create::CLIFF_SENSOR_THRESHOLD)
+        {
+            // Both sensors not sensing color
+            this->move_straight(speed);
+        }
+        else if (this->get_center_left_cliff() < Create::CLIFF_SENSOR_THRESHOLD)
+        {
+            // Left side ahead
+            this->drive_direct(0, speed);
+        }
+        else
+        {
+            // Right side ahead
+            this->drive_direct(speed, 0);
         }
         msleep(1);
     }   
