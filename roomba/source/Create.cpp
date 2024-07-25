@@ -194,6 +194,61 @@ void Create::cup_arm_retract()
     }
 }
 
+void Create::cup_arm_shake()
+{
+    set_servo_position(CUP_ARM_PIN, CUP_ARM_RIGHT_POS + CUP_ARM_SHAKE_AMOUNT);
+    msleep(250);
+    set_servo_position(CUP_ARM_PIN, CUP_ARM_RIGHT_POS - CUP_ARM_SHAKE_AMOUNT);
+    msleep(250);
+    set_servo_position(CUP_ARM_PIN, CUP_ARM_RIGHT_POS + CUP_ARM_SHAKE_AMOUNT);
+    msleep(250);
+    set_servo_position(CUP_ARM_PIN, CUP_ARM_RIGHT_POS - CUP_ARM_SHAKE_AMOUNT);
+    msleep(250);
+    set_servo_position(CUP_ARM_PIN, CUP_ARM_RIGHT_POS + CUP_ARM_SHAKE_AMOUNT);
+}
+
+void Create::slow_cup_arm_retract()
+{
+    int curr_servo_pos = get_servo_position(CUP_ARM_PIN);
+    while (curr_servo_pos != CUP_ARM_RETRACT_POS)
+    {
+        if (curr_servo_pos > CUP_ARM_RETRACT_POS)
+        {
+            curr_servo_pos -= 1;
+        }
+        else
+        {
+            curr_servo_pos += 1;
+        }
+
+        set_servo_position(CUP_ARM_PIN, curr_servo_pos);
+
+        msleep(10);
+    }
+    set_servo_position(CUP_ARM_PIN, CUP_ARM_RETRACT_POS);
+}
+
+void Create::slow_cup_arm_forward()
+{
+    int curr_servo_pos = get_servo_position(CUP_ARM_PIN);
+    while (curr_servo_pos != CUP_ARM_FORWARD_POS)
+    {
+        if (curr_servo_pos > CUP_ARM_FORWARD_POS)
+        {
+            curr_servo_pos -= 1;
+        }
+        else
+        {
+            curr_servo_pos += 1;
+        }
+
+        set_servo_position(CUP_ARM_PIN, curr_servo_pos);
+
+        msleep(10);
+    }
+    set_servo_position(CUP_ARM_PIN, CUP_ARM_FORWARD_POS);
+}
+
 void Create::open_cup_gate()
 {
     set_servo_position(CUP_GATE_PIN, CUP_GATE_OPEN_POS);
@@ -242,19 +297,7 @@ void Create::flick_switch()
 {
     this->extend_switch_arm();
     
-    set_servo_position(SWITCH_ARM_PIN, SWITCH_ARM_ABOVE_SWITCH_POS);
-    while (get_servo_position(SWITCH_ARM_PIN) != SWITCH_ARM_ABOVE_SWITCH_POS)
-    {
-        msleep(1);
-    }
-
-    this->extend_switch_arm();
-
-    set_servo_position(SWITCH_ARM_PIN, SWITCH_ARM_ABOVE_SWITCH_POS);
-    while (get_servo_position(SWITCH_ARM_PIN) != SWITCH_ARM_ABOVE_SWITCH_POS)
-    {
-        msleep(1);
-    }
+    set_servo_position(SWITCH_ARM_PIN, 1500);
 }
 
 void Create::reset_servos()

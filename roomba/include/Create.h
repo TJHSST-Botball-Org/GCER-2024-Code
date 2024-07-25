@@ -24,9 +24,10 @@ public:
     static const int CUP_GATE_PIN = 3;
 
     // Servo limits
-    static const int CUP_ARM_RIGHT_POS = 0;
-    static const int CUP_ARM_FORWARD_POS = 1059;
+    static const int CUP_ARM_RIGHT_POS = 167;
+    static const int CUP_ARM_FORWARD_POS = 1024;
     static const int CUP_ARM_RETRACT_POS = 2047;
+    static const int CUP_ARM_SHAKE_AMOUNT = 20;
 
     static const int CUP_GATE_OPEN_POS = 1070;
     static const int CUP_GATE_CLOSE_POS = 1660;
@@ -84,6 +85,11 @@ public:
     void cup_arm_right();
     void cup_arm_forward();
     void cup_arm_retract();
+    void cup_arm_shake();
+
+    void slow_cup_arm_retract();
+    void slow_cup_arm_forward();
+
     void open_cup_gate();
     void close_cup_gate();
 

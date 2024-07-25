@@ -138,7 +138,7 @@ int main()
 
     robot.set_distance(0);
     robot.move_straight(-100);
-    msleep(5100);
+    msleep(5175);
     robot.halt();
     std::cout << robot.get_distance() << std::flush;
     std::cout << "\n" << std::flush;
@@ -223,7 +223,7 @@ int main()
     robot.halt();
 
     robot.move_straight(-100);
-    msleep(1800);
+    msleep(1900);
 
 
     robot.drive_direct(100, -100); //cw
@@ -237,7 +237,14 @@ int main()
     msleep(700);
 
     robot.halt();
-    return 0;
+
+    robot.line_up_with_black_line(50);
+    // robot.move_straight(-100);
+    // msleep(1000);
+    // robot.move_straight(100);
+    // msleep(1000);
+    robot.halt();
+    
 
     // Move forward slightly
     // robot.move_straight(100);
@@ -252,7 +259,55 @@ int main()
     // Flicking the switch
     robot.extend_switch_arm();
     robot.flick_switch();
+    msleep(5000);
+    robot.cup_arm_shake();
 
+    
+    // Step 9: Go down, hit the wall
+    out("Step 9");
+    robot.slow_cup_arm_retract();
+    robot.drive_direct(100, -100); //cw
+    msleep(1600);
+    robot.move_straight(100);
+    while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
+    {
+        msleep(1);
+    }
+    robot.halt();
+    robot.move_straight(-100);
+    msleep(700);
+
+    // Step 10: Turn CCW, bump into the lava tube pit
+    out("Step 10");
+    robot.drive_direct(-100, 100); //ccw
+    msleep(1600);
+    robot.move_straight(100);
+    msleep(1000);
+    while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
+    {
+        msleep(1);
+    }
+    robot.halt();
+    robot.slow_cup_arm_forward();
+
+    return 0;
+
+
+
+    // Step 9: Move right, keep moving until hit wall
+    out("Step 9: Move right, keep moving until hit wall");
+    robot.move_straight(100);
+    
+    while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
+    {
+        msleep(1);
+    }
+    robot.move_straight(-100);
+    msleep(1000);
+    robot.halt();
+    robot.cup_arm_forward();
+    msleep(3000);
+    return 0;
 
     // Step 9: Pool noodle should be in the cup; start moving to the lava pits
     out("Step 9: Pool noodle should be in the cup; start moving to the lava pits");
