@@ -188,6 +188,8 @@ int main()
 
     robot.halt();
 
+    robot.cup_arm_forward();
+
     // Step 7: Rotate ccw, then move backwards until black line. We are then aligned with the pool noodles.
     out("Step 7: Rotate ccw, then move backwards until black line. We are then aligned with the pool noodles.");
     robot.drive_direct(-100, 100); //ccw
@@ -196,8 +198,12 @@ int main()
 
 	// robot.extend_switch_arm();
     robot.move_straight(-100);
-    msleep(8000); // moving towards the center of the board
+    msleep(4000); // moving towards the center of the board
 
+    robot.halt();
+    robot.cup_arm_retract();
+    robot.move_straight(-100);
+    msleep(4000);
 
 
 
@@ -219,14 +225,16 @@ int main()
 
 
     robot.drive_direct(100, -100); //cw
-    msleep(1500);
+    msleep(1450);
     robot.halt();
 
     robot.extend_switch_arm();
+    msleep(1000);
 
     robot.move_straight(-100);
-    msleep(450);
+    msleep(850);
 
+    robot.halt();
     return 0;
 
     // Move forward slightly
