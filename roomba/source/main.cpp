@@ -36,7 +36,7 @@ int main()
     }
 
     robot.drive_direct(100, -100); //cw
-    msleep(1400);
+    msleep(1600);
 
     out("Step 1: Move until black line");
 
@@ -133,12 +133,12 @@ int main()
     robot.halt();
 
     robot.drive_direct(100, -100); //cw
-    msleep(600); // Turn 45 deg CW
+    msleep(800); // Turn 45 deg CW
     robot.halt();
 
     robot.set_distance(0);
     robot.move_straight(-100);
-    msleep(5500);
+    msleep(5100);
     robot.halt();
     std::cout << robot.get_distance() << std::flush;
     std::cout << "\n" << std::flush;
@@ -147,12 +147,12 @@ int main()
     out("Step 4: Turn left and push everything into the rock pit");
 
     robot.drive_direct(-100, 100); //ccw
-    msleep(2200); // 120 deg
+    msleep(2400); // 
     
     robot.halt();
     
     robot.drive_direct(100, -100); //cw
-    msleep(600);
+    msleep(800);
     
 
     robot.move_straight(-100);
@@ -201,9 +201,11 @@ int main()
     msleep(4000); // moving towards the center of the board
 
     robot.halt();
+    robot.move_straight(0);
     robot.cup_arm_retract();
     robot.move_straight(-100);
     msleep(4000);
+    robot.line_up_with_black_line(-100);
 
 
 
@@ -225,14 +227,14 @@ int main()
 
 
     robot.drive_direct(100, -100); //cw
-    msleep(1450);
+    msleep(1600);
     robot.halt();
 
     robot.extend_switch_arm();
     msleep(1000);
 
     robot.move_straight(-100);
-    msleep(850);
+    msleep(700);
 
     robot.halt();
     return 0;
