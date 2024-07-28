@@ -27,7 +27,7 @@ public:
     static const int CUP_ARM_RIGHT_POS = 167;
     static const int CUP_ARM_FORWARD_POS = 1024;
     static const int CUP_ARM_RETRACT_POS = 2047;
-    static const int CUP_ARM_SHAKE_AMOUNT = 20;
+    static const int CUP_ARM_SHAKE_AMOUNT = 30;
 
     static const int CUP_GATE_OPEN_POS = 1070;
     static const int CUP_GATE_CLOSE_POS = 1660;

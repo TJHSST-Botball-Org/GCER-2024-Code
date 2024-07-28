@@ -17,8 +17,7 @@ int main()
 {
     Create robot;
     
-    //wait_for_light();
-
+    //wait_for_light(5);
     shut_down_in(119);
 
     /* MOVING THE ROCKS*/
@@ -36,7 +35,7 @@ int main()
     }
 
     robot.drive_direct(100, -100); //cw
-    msleep(1600);
+    msleep(1500);
 
     out("Step 1: Move until black line");
 
@@ -108,8 +107,6 @@ int main()
     out("Step 3: Turn right, go right");
 
 
-    // When turning right, turn 45 degs, back up a bit, then turn 45 degs
-    // This is so that we don't miss the first orange pom
     robot.drive_direct(100, -100); //cw
     msleep(800);
     robot.halt();
@@ -129,7 +126,7 @@ int main()
     robot.halt();
 
     robot.move_straight(-100);
-    msleep(2000);
+    msleep(1500);
     robot.halt();
 
     robot.drive_direct(100, -100); //cw
@@ -147,12 +144,12 @@ int main()
     out("Step 4: Turn left and push everything into the rock pit");
 
     robot.drive_direct(-100, 100); //ccw
-    msleep(2400); // 
+    msleep(2200); // 
     
     robot.halt();
     
     robot.drive_direct(100, -100); //cw
-    msleep(800);
+    msleep(600);
     
 
     robot.move_straight(-100);
@@ -222,44 +219,48 @@ int main()
 
     robot.halt();
 
-    robot.move_straight(-100);
-    msleep(1900);
 
+    // We are going to move south a bit to get rid of the second poms pile
+    robot.move_straight(-200);
+    msleep(2200);
+    robot.halt();
+
+    robot.move_straight(100);
+
+    while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
+    {
+        msleep(1);
+    }
+    robot.halt();
+
+
+    robot.move_straight(-100);
+    msleep(1850);
+    robot.halt();
 
     robot.drive_direct(100, -100); //cw
     msleep(1600);
     robot.halt();
 
+    robot.move_straight(50);
+    msleep(1000);
+    robot.halt();
     robot.extend_switch_arm();
     msleep(1000);
-
-    robot.move_straight(-100);
-    msleep(700);
-
+    robot.line_up_with_black_line(-50);
+    msleep(750);
     robot.halt();
-
-    robot.line_up_with_black_line(50);
-    // robot.move_straight(-100);
-    // msleep(1000);
-    // robot.move_straight(100);
-    // msleep(1000);
-    robot.halt();
-    
-
-    // Move forward slightly
-    // robot.move_straight(100);
-    // msleep(1250); 
-
 
     // Step 8: Get the arms ready, flick the switch
     out("Step 8: Get the arms ready, flick the switch");
     robot.cup_arm_right();
+    msleep(1500);
     robot.close_cup_gate();
     
     // Flicking the switch
-    robot.extend_switch_arm();
+    // Arm should already be extended
     robot.flick_switch();
-    msleep(5000);
+    msleep(1000);
     robot.cup_arm_shake();
 
     
@@ -275,7 +276,7 @@ int main()
     }
     robot.halt();
     robot.move_straight(-100);
-    msleep(700);
+    msleep(250);
 
     // Step 10: Turn CCW, bump into the lava tube pit
     out("Step 10");
