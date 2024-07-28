@@ -93,6 +93,7 @@ public:
 
     void open_cup_gate();
     void close_cup_gate();
+    void shake_cup_gate();
 
     // Switch arm
     void extend_switch_arm();

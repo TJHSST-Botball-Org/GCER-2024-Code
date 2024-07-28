@@ -327,7 +327,31 @@ int main()
         msleep(1);
     }
     robot.halt();
+
+    robot.move_straight(-100);
+    msleep(450);
+    robot.halt();
+
+    robot.drive_direct(-100, 100); //ccw
+    msleep(675);
+    robot.halt();
     robot.slow_cup_arm_forward();
+
+    msleep(1000);
+    robot.open_cup_gate();
+    msleep(500);
+
+    // Shake
+    robot.close_cup_gate();
+    msleep(500);
+    robot.open_cup_gate();
+    msleep(500);
+    robot.close_cup_gate();
+    msleep(500);
+    robot.open_cup_gate();
+
+    set_servo_position(2, 641);
+    msleep(5000);
 
     return 0;
 
@@ -349,8 +373,7 @@ int main()
     msleep(1000);
     robot.halt();
     robot.cup_arm_forward();
-    msleep(3000);
-    return 0;
+    
 
     // Step 9: Pool noodle should be in the cup; start moving to the lava pits
     out("Step 9: Pool noodle should be in the cup; start moving to the lava pits");
