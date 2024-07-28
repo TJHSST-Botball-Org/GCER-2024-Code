@@ -1,3 +1,4 @@
+
 #pragma once
 
 #ifndef IS_KIPR_INCLUDED
@@ -32,7 +33,7 @@ public:
     static const int CUP_GATE_OPEN_POS = 1070;
     static const int CUP_GATE_CLOSE_POS = 1660;
 
-    static const int SWITCH_ARM_EXTEND_POS = 208;
+    static const int SWITCH_ARM_EXTEND_POS = 0;
     static const int SWITCH_ARM_ABOVE_SWITCH_POS = 50;
     static const int SWITCH_ARM_RETRACT_POS = 1588;
 

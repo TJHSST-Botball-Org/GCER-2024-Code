@@ -196,15 +196,15 @@ void Create::cup_arm_retract()
 
 void Create::cup_arm_shake()
 {
-    set_servo_position(CUP_ARM_PIN, CUP_ARM_RIGHT_POS + CUP_ARM_SHAKE_AMOUNT);
+    set_servo_position(CUP_ARM_PIN, 0);
     msleep(250);
-    set_servo_position(CUP_ARM_PIN, CUP_ARM_RIGHT_POS - CUP_ARM_SHAKE_AMOUNT);
+    set_servo_position(CUP_ARM_PIN, 110);
     msleep(250);
-    set_servo_position(CUP_ARM_PIN, CUP_ARM_RIGHT_POS + CUP_ARM_SHAKE_AMOUNT);
+    set_servo_position(CUP_ARM_PIN, 0);
     msleep(250);
-    set_servo_position(CUP_ARM_PIN, CUP_ARM_RIGHT_POS - CUP_ARM_SHAKE_AMOUNT);
+    set_servo_position(CUP_ARM_PIN, 110);
     msleep(250);
-    set_servo_position(CUP_ARM_PIN, CUP_ARM_RIGHT_POS + CUP_ARM_SHAKE_AMOUNT);
+    set_servo_position(CUP_ARM_PIN, 0);
 }
 
 void Create::slow_cup_arm_retract()
@@ -223,7 +223,7 @@ void Create::slow_cup_arm_retract()
 
         set_servo_position(CUP_ARM_PIN, curr_servo_pos);
 
-        msleep(10);
+        msleep(5);
     }
     set_servo_position(CUP_ARM_PIN, CUP_ARM_RETRACT_POS);
 }
@@ -244,7 +244,7 @@ void Create::slow_cup_arm_forward()
 
         set_servo_position(CUP_ARM_PIN, curr_servo_pos);
 
-        msleep(10);
+        msleep(5);
     }
     set_servo_position(CUP_ARM_PIN, CUP_ARM_FORWARD_POS);
 }
