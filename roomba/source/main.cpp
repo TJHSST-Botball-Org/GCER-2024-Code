@@ -239,7 +239,7 @@ int main()
     
     
     
-    
+// LINE UP ON THE UP AND DOWN AXIS OF THE BOARD
     robot.move_straight(100);
 
     while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
@@ -256,6 +256,15 @@ int main()
     robot.drive_direct(100, -100); //cw
     msleep(1600);
     robot.halt();
+// END LINE UP ON THE UP AND DOWN AXIS OF THE BOARD
+
+// ROBOT IS NOW FACING TOWARDS RIGHT SIDE, ALIGNED UP AND DOWN AXIS
+
+// Here is where you want to align the robot on the left and right axis
+// Extend the switch arm here and return to stop the code
+// See where the switch arm is, and then make adjustments 
+// Adjustments include moving forward/backward then extend switch arm
+// and then move back/foward to correct for that movement 
 
     robot.move_straight(50);
     msleep(1000);
@@ -268,6 +277,8 @@ int main()
     robot.move_straight(-50);
     msleep(1500);
     robot.halt();
+
+// END CODE TO EXTEND SWITCH ARM AND POSITION IT UNDER THE SWITCH
 
     robot.cup_arm_right();
     msleep(1500);
