@@ -155,6 +155,10 @@ int main()
     robot.move_straight(-100);
     msleep(1000);
 
+
+
+
+
     // Step 5: Drive and bump into the lava tube pit
     out("Step 5: Drive and bump into the lava tube pit");
     robot.move_straight(100);
@@ -206,6 +210,11 @@ int main()
 
 
 
+
+
+
+
+
     robot.drive_direct(-100, 100); //ccw
     msleep(1600);
     robot.halt();
@@ -225,6 +234,12 @@ int main()
     msleep(2200);
     robot.halt();
 
+    
+    
+    
+    
+    
+    
     robot.move_straight(100);
 
     while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
@@ -247,9 +262,30 @@ int main()
     robot.halt();
     robot.extend_switch_arm();
     msleep(1000);
-    robot.line_up_with_black_line(-50);
-    msleep(750);
+
+
+
+    robot.move_straight(-50);
+    msleep(1500);
     robot.halt();
+
+    robot.cup_arm_right();
+    msleep(1500);
+    robot.flick_switch();
+    msleep(1500);
+
+    return 0;
+
+    // Hello the switch arm should be below the switch
+
+
+
+
+
+
+
+
+    
 
     // Step 8: Get the arms ready, flick the switch
     out("Step 8: Get the arms ready, flick the switch");
