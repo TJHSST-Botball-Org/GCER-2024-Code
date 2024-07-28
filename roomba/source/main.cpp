@@ -262,8 +262,8 @@ int main()
     robot.line_up_with_black_line(-100);
     
     // Back up a little bit, then extend switch arm
-    robot.move_straight(200);
-    msleep(1000);
+    robot.move_straight(100);
+    msleep(1200);
     robot.halt();
 
 
@@ -271,8 +271,8 @@ int main()
     msleep(1500);
 
 
-    robot.move_straight(-200);
-    msleep(1000);
+    robot.move_straight(-100);
+    msleep(1200);
 
 
     robot.halt();
