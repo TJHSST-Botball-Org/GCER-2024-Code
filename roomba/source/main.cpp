@@ -274,7 +274,7 @@ int main()
     robot.move_straight(-200);
     msleep(1000);
 
-    
+
     robot.halt();
 
 
@@ -292,6 +292,9 @@ int main()
     msleep(1000);
     robot.cup_arm_shake();
 
+
+
+
     
     // Step 9: Go down, hit the wall
     out("Step 9");
@@ -304,13 +307,19 @@ int main()
         msleep(1);
     }
     robot.halt();
+
+    
+    
     robot.move_straight(-100);
-    msleep(500);
+    msleep(1100);
+    
+    
 
     // Step 10: Turn CCW, bump into the lava tube pit
     out("Step 10");
     robot.drive_direct(-100, 100); //ccw
     msleep(1600);
+
     robot.move_straight(100);
     msleep(1000);
     while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
@@ -322,6 +331,10 @@ int main()
 
     return 0;
 
+// 763 and 554
+
+
+// OLD CODE BELOW DO NOT USE
 
 
     // Step 9: Move right, keep moving until hit wall
