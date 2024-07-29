@@ -252,9 +252,8 @@ void Create::arm_retract(int c)
 
 void Create::slow_cup_arm_forward()
 {
-    int c = 463;
     int curr_servo_pos = get_servo_position(CUP_ARM_PIN);
-    while (curr_servo_pos != c)
+    while (curr_servo_pos != CUP_ARM_FORWARD_POS)
     {
         if (curr_servo_pos > c)
         {
@@ -269,7 +268,7 @@ void Create::slow_cup_arm_forward()
 
         msleep(5);
     }
-    set_servo_position(CUP_ARM_PIN, c);
+    set_servo_position(CUP_ARM_PIN, CUP_ARM_FORWARD_POS);
 }
 
 void Create::open_cup_gate()
