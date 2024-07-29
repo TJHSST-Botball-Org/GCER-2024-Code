@@ -17,7 +17,7 @@ int main()
 {
     Create robot;
     
-    //wait_for_light(5);
+    wait_for_light(5);
     shut_down_in(119);
 
     /* MOVING THE ROCKS*/
