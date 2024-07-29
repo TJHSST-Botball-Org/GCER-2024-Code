@@ -281,26 +281,9 @@ int main()
     robot.move_straight(-100);
     msleep(556); // 556 = 2.5 * (2000/9)
 
-    return 0; //todo
-    
-    // Back up a little bit, then extend switch arm
-    robot.move_straight(100);
-    msleep(1200);
-    robot.halt();
-
-
-    robot.extend_switch_arm();
-    msleep(1500);
-
-
-    robot.move_straight(-100);
-    msleep(1200);
-
-
-    robot.halt();
-
-
-    
+    // The robot is now facing east, and is aligned on both north-south 
+    // and east-west axis.
+     
 
     // Step 8: Get the arms ready, flick the switch
     out("Step 8: Get the arms ready, flick the switch");
