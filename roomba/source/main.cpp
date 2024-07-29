@@ -312,7 +312,7 @@ int main()
     
     
     robot.move_straight(-400);
-    msleep(1150);
+    msleep(1000);
     
     
 
@@ -327,9 +327,11 @@ int main()
     robot.line_up_with_black_line(-200);
     robot.halt();
     
-    robot.arm_retract(553);
     robot.move_straight(100);
-	msleep(6000);
+    msleep(2000);
+    
+    robot.arm_retract(553);
+    
     //while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
     //{
     //    msleep(1);
