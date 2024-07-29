@@ -255,7 +255,7 @@ void Create::slow_cup_arm_forward()
     int curr_servo_pos = get_servo_position(CUP_ARM_PIN);
     while (curr_servo_pos != CUP_ARM_FORWARD_POS)
     {
-        if (curr_servo_pos > c)
+        if (curr_servo_pos > CUP_ARM_FORWARD_POS)
         {
             curr_servo_pos -= 1;
         }
