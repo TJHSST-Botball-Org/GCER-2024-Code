@@ -299,11 +299,7 @@ void Create::close_cup_gate()
 void Create::extend_switch_arm()
 {
     set_servo_position(SWITCH_ARM_PIN, SWITCH_ARM_EXTEND_POS);
-
-    while (get_servo_position(SWITCH_ARM_PIN) != SWITCH_ARM_EXTEND_POS)
-    {
-        msleep(1);
-    }
+    msleep(1000);
 }
 
 void Create::retract_switch_arm()
