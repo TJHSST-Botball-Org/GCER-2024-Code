@@ -130,6 +130,7 @@ int main()
     robot.halt();
 
     robot.drive_direct(100, -100); //cw
+    //MADE CHANGE TO TURN VALUE, ORIGINAL 800
     msleep(800); // Turn 45 deg CW
     robot.halt();
 
@@ -311,7 +312,7 @@ int main()
     
     
     robot.move_straight(-400);
-    msleep(888);
+    msleep(1150);
     
     
 
@@ -326,26 +327,26 @@ int main()
     robot.line_up_with_black_line(-200);
     robot.halt();
     
+    robot.arm_retract(553);
     robot.move_straight(100);
+	msleep(6000);
+    //while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
+    //{
+    //    msleep(1);
+    //}
+    //robot.halt();
 
-    while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
-    {
-        msleep(1);
-    }
-    robot.halt();
+    
+    //robot.halt();
 
-    robot.move_straight(-100);
-    msleep(450);
-    robot.halt();
+    //robot.drive_direct(-100, 100); //ccw
+    //msleep(675);
+    //robot.halt();
+    //robot.slow_cup_arm_forward();
 
-    robot.drive_direct(-100, 100); //ccw
-    msleep(675);
-    robot.halt();
-    robot.slow_cup_arm_forward();
-
-    msleep(1000);
-    robot.open_cup_gate();
-    msleep(500);
+    //msleep(1000);
+    //robot.open_cup_gate();
+    //msleep(500);
 
     // Shake
     robot.close_cup_gate();
@@ -362,55 +363,4 @@ int main()
     return 0;
 
 // 763 and 554
-
-
-// OLD CODE BELOW DO NOT USE
-
-
-    // Step 9: Move right, keep moving until hit wall
-    out("Step 9: Move right, keep moving until hit wall");
-    robot.move_straight(100);
-    
-    while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
-    {
-        msleep(1);
-    }
-    robot.move_straight(-100);
-    msleep(1000);
-    robot.halt();
-    robot.cup_arm_forward();
-    
-
-    // Step 9: Pool noodle should be in the cup; start moving to the lava pits
-    out("Step 9: Pool noodle should be in the cup; start moving to the lava pits");
-    robot.retract_switch_arm();
-    robot.move_straight(100);
-    msleep(1000);
-    robot.cup_arm_forward();
-    
-    // Step 10: Turn towards the south wall, bump into it to align
-    out("Step 10: Turn towards the south wall, bump into it to align");
-    robot.drive_direct(100, -100); //cw
-    msleep(1600);
-    robot.move_straight(50);
-    while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
-    {
-        msleep(1);
-    }
-    robot.drive_direct(-100, 100); //ccw
-    msleep(1600);
-
-    // Step 11: Move towards the lava tube pits until we bump into it
-    out("Step 11: Move towards the lava tube pits until we bump into it");
-    robot.move_straight(100);
-    while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
-    {
-        msleep(1);
-    }
-
-    // Step 12: Drop the pool noodles
-    out("Step 12: Drop the pool noodles");
-    robot.open_cup_gate();
-
-    // More to do I guess later on but for now it works
 }
