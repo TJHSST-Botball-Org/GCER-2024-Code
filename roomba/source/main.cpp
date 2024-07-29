@@ -238,7 +238,9 @@ int main()
     
     
     
-    
+    // Bumping into the moon base/tower so that we align ourselves
+    // Then move south to get in line in the middle on the up and
+    // down axis.
     
     robot.move_straight(100);
 
@@ -250,9 +252,14 @@ int main()
 
 
     robot.move_straight(-100);
-    msleep(1800);
+    msleep(1578); // This number controls how much on the up and down axis
+                  // to move back. This will align your robot
+                  // on the up and down axis
+                  // 1578 / (2000/9) = 7.1 inches
+                  // Units are: ms / (ms/inch)
     robot.halt();
 
+    // Rotating so that the front faces east
     robot.drive_direct(100, -100); //cw
     msleep(1600);
     robot.halt();
