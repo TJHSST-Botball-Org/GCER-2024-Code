@@ -264,10 +264,24 @@ int main()
     msleep(1600);
     robot.halt();
 
-    robot.move_straight(10);
-    msleep(1000);
+    // We are now in the middle of the board, aligned on the north-south axis
+    // We are facing east
+    // However, we still need to align on the east-west axis
+
+    // First, we move east four inches, so that the switch arm won't hit anything
+    robot.move_straight(100);
+    msleep(889); // 889 = 4 inch * (2000/9)
     robot.halt();
-    robot.line_up_with_black_line(-100);
+
+    // We then extend the switch
+    robot.extend_switch_arm();
+    msleep(1000); // Give it some time to extend
+
+    // Then we can move forward 2.5 inches so that everything is aligned
+    robot.move_straight(-100);
+    msleep(556); // 556 = 2.5 * (2000/9)
+
+    return 0; //todo
     
     // Back up a little bit, then extend switch arm
     robot.move_straight(100);
