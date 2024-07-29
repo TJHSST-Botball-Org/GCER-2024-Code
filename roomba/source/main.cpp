@@ -17,7 +17,7 @@ int main()
 {
     Create robot;
     
-    wait_for_light(5);
+    //wait_for_light(5);
     shut_down_in(119);
 
     /* MOVING THE ROCKS*/
@@ -249,7 +249,7 @@ int main()
 
 
     robot.move_straight(-100);
-    msleep(1750);
+    msleep(1800);
     robot.halt();
 
     robot.drive_direct(100, -100); //cw
@@ -310,8 +310,8 @@ int main()
 
     
     
-    robot.move_straight(-100);
-    msleep(1100);
+    robot.move_straight(-400);
+    msleep(888);
     
     
 
@@ -321,7 +321,13 @@ int main()
     msleep(1600);
 
     robot.move_straight(100);
-    msleep(1000);
+    msleep(400);
+    
+    robot.line_up_with_black_line(-200);
+    robot.halt();
+    
+    robot.move_straight(100);
+
     while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
     {
         msleep(1);

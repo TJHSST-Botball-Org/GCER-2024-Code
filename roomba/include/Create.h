@@ -86,6 +86,7 @@ public:
     void cup_arm_right();
     void cup_arm_forward();
     void cup_arm_retract();
+    void arm_retract(int c);
     void cup_arm_shake();
 
     void slow_cup_arm_retract();
