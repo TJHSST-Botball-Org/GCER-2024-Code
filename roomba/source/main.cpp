@@ -280,13 +280,23 @@ int main()
     robot.move_straight(-100);
     msleep(889); // 556 = 2.5 * (2000/9)
 	robot.halt();
+
+    robot.move_straight(-200);
+    msleep(3*222/2);
+    robot.center_cliff_line_up_with_black_line(-50);
+    robot.halt();
+    
+    robot.move_straight(100);
+    msleep(6*222);
+    robot.halt();
+
     // The robot is now facing east, and is aligned on both north-south 
     // and east-west axis.
      
 
     // Step 8: Get the arms ready, flick the switch
     out("Step 8: Get the arms ready, flick the switch");
-    robot.cup_arm_right();
+    set_servo_position(2, 0);
     msleep(1500);
     robot.close_cup_gate();
     
