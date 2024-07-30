@@ -228,13 +228,12 @@ void Create::slow_cup_arm_retract()
     set_servo_position(CUP_ARM_PIN, CUP_ARM_RETRACT_POS);
 }
 
-void Create::arm_retract(int c)
+void Create::slow_cup_arm_right()
 {
-
     int curr_servo_pos = get_servo_position(CUP_ARM_PIN);
-    while (curr_servo_pos != c)
+    while (curr_servo_pos != CUP_ARM_RIGHT_POS)
     {
-        if (curr_servo_pos > c)
+        if (curr_servo_pos > CUP_ARM_RIGHT_POS)
         {
             curr_servo_pos -= 1;
         }
@@ -247,7 +246,18 @@ void Create::arm_retract(int c)
 
         msleep(5);
     }
+    set_servo_position(CUP_ARM_PIN, CUP_ARM_RIGHT_POS);
+}
+
+void Create::arm_retract(int c)
+{
+	enable_servo(CUP_ARM_PIN);
     set_servo_position(CUP_ARM_PIN, c);
+
+    while (get_servo_position(CUP_ARM_PIN) != c)
+    {
+        msleep(2);
+    }
 }
 
 void Create::slow_cup_arm_forward()

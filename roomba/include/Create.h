@@ -25,12 +25,12 @@ public:
     static const int CUP_GATE_PIN = 3;
 
     // Servo limits
-    static const int CUP_ARM_RIGHT_POS = 167;
+    static const int CUP_ARM_RIGHT_POS = 553;
     static const int CUP_ARM_FORWARD_POS = 1024;
     static const int CUP_ARM_RETRACT_POS = 2047;
     static const int CUP_ARM_SHAKE_AMOUNT = 30;
 
-    static const int CUP_GATE_OPEN_POS = 1070;
+    static const int CUP_GATE_OPEN_POS = 272;
     static const int CUP_GATE_CLOSE_POS = 1660;
 
     static const int SWITCH_ARM_EXTEND_POS = 260;
@@ -40,8 +40,8 @@ public:
     // Sensor limits
     static const int CLIFF_SENSOR_THRESHOLD = 2000;
 
-    // Turn sleep amount
-    static const int NINETY_DEGREE_TURN_SLEEP = 1600;
+    // Turn sleep amount, 1875
+    static const int NINETY_DEGREE_TURN_SLEEP = 1650;
 
 
     Create();
@@ -94,6 +94,7 @@ public:
 
     void slow_cup_arm_retract();
     void slow_cup_arm_forward();
+    void slow_cup_arm_right();
 
     void open_cup_gate();
     void close_cup_gate();
