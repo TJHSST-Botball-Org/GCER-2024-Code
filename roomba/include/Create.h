@@ -40,6 +40,9 @@ public:
     // Sensor limits
     static const int CLIFF_SENSOR_THRESHOLD = 2000;
 
+    // Turn sleep amount
+    static const int NINETY_DEGREE_TURN_SLEEP = 1600;
+
 
     Create();
     ~Create();

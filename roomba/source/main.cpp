@@ -27,7 +27,7 @@ int main()
     robot.set_distance(0);
 
     robot.drive_direct(-100, 100); //ccw-
-    msleep(1600);
+    msleep(Create::NINETY_DEGREE_TURN_SLEEP);
 
     while (robot.get_left_bump() != 1 && robot.get_right_bump() != 1)
     {
@@ -216,7 +216,7 @@ int main()
 
 
     robot.drive_direct(-100, 100); //ccw
-    msleep(1600);
+    msleep(Create::NINETY_DEGREE_TURN_SLEEP);
     robot.halt();
 
     robot.move_straight(100);
@@ -261,7 +261,7 @@ int main()
 
     // Rotating so that the front faces east
     robot.drive_direct(100, -100); //cw
-    msleep(1600);
+    msleep(Create::NINETY_DEGREE_TURN_SLEEP);
     robot.halt();
 
     // We are now in the middle of the board, aligned on the north-south axis
@@ -329,7 +329,7 @@ int main()
 
     // 2. Turn CW, face south
     robot.drive_direct(100, -100); //cw
-    msleep(1600);
+    msleep(Create::NINETY_DEGREE_TURN_SLEEP);
     robot.halt();
 	
     return 0;
@@ -348,7 +348,7 @@ int main()
 
     // 5. Turn CCW, face east.
     robot.drive_direct(-100, 100); //cw
-    msleep(1600);
+    msleep(Create::NINETY_DEGREE_TURN_SLEEP);
     robot.halt();
 
     // 6. Move back 6 inches
@@ -361,7 +361,7 @@ int main()
     out("Step 9");
     robot.slow_cup_arm_retract();
     robot.drive_direct(100, -100); //cw
-    msleep(1600);
+    msleep(Create::NINETY_DEGREE_TURN_SLEEP);
     robot.move_straight(100);
     while (robot.get_left_bump() == 0 && robot.get_right_bump() == 0)
     {
@@ -379,7 +379,7 @@ int main()
     // Step 10: Turn CCW, bump into the lava tube pit
     out("Step 10");
     robot.drive_direct(-100, 100); //ccw
-    msleep(1600);
+    msleep(Create::NINETY_DEGREE_TURN_SLEEP);
 
     robot.move_straight(100);
     msleep(400);
