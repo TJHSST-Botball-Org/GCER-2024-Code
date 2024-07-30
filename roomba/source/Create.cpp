@@ -190,7 +190,7 @@ void Create::cup_arm_retract()
 
     while (get_servo_position(CUP_ARM_PIN) != CUP_ARM_RETRACT_POS)
     {
-        msleep(1);
+        msleep(2);
     }
 }
 
