@@ -281,10 +281,6 @@ int main()
     msleep(889); // 556 = 2.5 * (2000/9)
 	robot.halt();
 
-    robot.move_straight(-200);
-    msleep(3*222/2);
-    robot.center_cliff_line_up_with_black_line(-50);
-    robot.halt();
     
     robot.move_straight(100);
     msleep(6*222);
